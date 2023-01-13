@@ -8,3 +8,4 @@ Nothing big, just to have in mind my spending.
 - [ ] Account management
 - [ ] Transaction management
 - [ ] Read properly from "money.dat"
+- [ ] Allow use for multiple users (with their own .dat files OR all in the same file)
