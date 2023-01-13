@@ -56,7 +56,6 @@ int main() {
                 printf("Add Account\n-----\n");
                 //add_account(money, &finances);
                 printf("N: ");
-                finan
                 getch();
                 break;
             case 3:
