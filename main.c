@@ -3,49 +3,47 @@
 #include <conio.h>
 #include "headers.h"
 
-void add_account (MONEY *);
-void print_account (MONEY *);
-void print_transaction(MONEY *);
-void add_transaction(MONEY *);
-
 int main() {
-    MONEY finances[500];
     FILE *money;
-    int ans, i, c, d;
+    int ans, n;
     //Checks are run
     printf("Running checks...\n");
     if(!(money=fopen("money.dat", "rb"))){
         money=fopen("money.dat", "wb");
-        fclose(money);
     }
-    //passthrough(finances);
+    fread(&n, sizeof(int), 1, money);
+    MONEY finances[n];
+    fread(finances, sizeof(MONEY), n, money);
+    fclose(money);
     printf("Done! Welcome\n");
 
     //Beginning of the program
     do {
         do {
             system("cls");
-            passthrough(finances);
-            //printf("Menu:\n1. Add account\n2. Print all accounts\n3. Add transaction\n4. Print all transactions\n0. Exit\n-----\nOption: ");
+            printf("Menu:\n1. Add account\n2. Print all accounts\n3. Add transaction\n4. Print all transactions\n0. Exit\n-----\nOption: ");
             scanf("%i", &ans);
         } while (ans < 0 || ans > 5);
         switch (ans) {
             case 0: //Exit
                 system("cls");
-                printf("Unsaved changes will be lost\n");
+                money = fopen("money.dat", "wb");
+                fwrite(&n, sizeof(int), 1, money);
+                fwrite(finances, sizeof(MONEY), n, money);
+                fclose(money);
                 printf("System Shutdown...\n");
                 getch();
                 break;
             case 1: //Add Account
                 system("cls");
                 printf("Add Account\n-----\n");
-                add_account(finances);
+                add_account(finances, &n);
                 getch();
                 break;
             case 2: //Print all accounts
                 system("cls");
                 printf("Print Accounts\n-----\n");
-                print_account(finances);
+                print_account(finances, n);
                 getch();
                 break;
             case 3: //Add transaction

@@ -5,48 +5,28 @@
 #ifndef FINANCE_MANAGER_HEADERS_H
 #define FINANCE_MANAGER_HEADERS_H
 
-typedef struct{
+typedef struct money{
     char account[50];
     char concept[100];
 }MONEY;
 
-int passthrough (MONEY *finances){
-    FILE * money;
-    int i;
-    money=fopen("money.dat", "rb");
-    for(i=0;fread(&finances[i].concept, sizeof(MONEY), 1, money);i++){
-        printf("CON:%s\n%i\n\n", finances[i].concept, i);
-    }
-    rewind(money);
-    for(i=0;fread(&finances[i].account, sizeof(MONEY), 1, money);i++){
-        printf("AC:%s\n%i\n\n", finances[i].account, i);
-    }
-}
-
-void add_account (MONEY *finances){
-    FILE * money;
-    money=fopen("money.dat", "ab");
+void add_account (MONEY *finances, int *n){
+    int i=*n;
     fflush(stdin);
     printf("Enter the account number: ");
-    gets(finances[0].account);
+    gets(finances[i].account);
     printf("Enter account concept: ");
-    gets(finances[0].concept);
-    printf("Account number: %s\nDescription: %s", finances[0].account, finances[0].concept);
-    fwrite(finances, sizeof(MONEY), 1, money);
-    fclose(money);
+    gets(finances[i].concept);
+    printf("Account number: %s\nDescription: %s\n", finances[i].account, finances[i].concept);
+    *n++;
 }
 
-void print_account (MONEY *finances){
-    FILE * money;
-    money=fopen("money.dat", "rb");
+void print_account (MONEY *finances, int n){
     int i;
-    char accounts[50];
     fflush(stdin);
-    printf("%s\n%s\n----\n", finances->account, finances->concept);
-    /*for(i=0;i<50;i++){
+    for(i=0;i<=n;i++){
         printf("%s\n%s\n----\n", finances[i].account, finances[i].concept);
-    }*/
-    fclose(money);
+    }
 }
 
 void add_transaction(MONEY *finances);
