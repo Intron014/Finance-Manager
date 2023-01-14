@@ -22,9 +22,13 @@ void add_account (MONEY *finances, int n){
 void print_account (MONEY *finances, int n){
     int i;
     fflush(stdin);
-    for(i=0;i<n;i++){
-        printf("%s\n%s\n----\n", finances[i].account, finances[i].concept);
+    if(!n){
+        printf("No accounts in file");
     }
+    else
+        for(i=0;i<n;i++){
+           printf("%s\n%s\n----\n", finances[i].account, finances[i].concept);
+        }
 }
 
 void add_transaction(MONEY *finances);
