@@ -33,9 +33,10 @@ int main() {
     }
     fread(&n, sizeof(int), 1, money);
     fread(&o, sizeof(int), 1, money);
-    MONEY finances[50];
-    TRANS transactions[500];
+    MONEY finances[MAX_ACC];
+    TRANS transactions[MAX_TRANS];
     fread(finances, sizeof(MONEY), n, money);
+    fread(transactions, sizeof(TRANS), n, money);
     fclose(money);
     printf("Done! Welcome %s\n", user);
 
@@ -58,6 +59,7 @@ int main() {
                 fwrite(&n, sizeof(int), 1, money);
                 fwrite(&o, sizeof(int), 1, money);
                 fwrite(finances, sizeof(MONEY), n, money);
+                fwrite(transactions, sizeof(TRANS), n, money);
                 fclose(money);
                 printf("Done!\n");
                 break;
@@ -82,14 +84,19 @@ int main() {
             case 3: //Add transaction
                 system("cls");
                 printf("Add transaction\n-----\n");
-                //add_transaction(transactions, o);
-                o++;
-                getch();
+                r=add_transaction(transactions, o);
+                switch (r) {
+                    default:
+                        o++;
+                        break;
+                    case 99:
+                        break;
+                }
                 break;
             case 4: //Print all transactions
                 system("cls");
                 printf("Print transactions\n-----\n");
-                //print_transaction(transactions, o);
+                print_transaction(transactions, o);
                 getch();
                 break;
             default: //Default (Just so CLion stops screaming at me)
