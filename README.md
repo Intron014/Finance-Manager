@@ -9,4 +9,4 @@ Nothing big, just to have in mind my spending.
 - [ ] Delete/modify accounts SPECIFIC accounts
 - [ ] Transaction management
 - [x] Read properly from "money.dat" (Okay-ish, could be better)
-- [ ] Allow use for multiple users (with their own .dat files OR all in the same file)
+- [x] Allow use for multiple users (with their own .dat files OR all in the same file)

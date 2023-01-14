@@ -13,16 +13,21 @@ typedef struct transactions{
     float amount;
     char merchant[50];
 
-}TRANSACTIONS;
+}TRANS;
 
-void add_account (MONEY *finances, int n){
+int add_account (MONEY *finances, int n){
+    char ans;
     if(n<50){
         fflush(stdin);
         printf("Enter the account number: ");
         gets(finances[n].account);
         printf("Enter account description: ");
         gets(finances[n].concept);
-        printf("Account number: %s\nDescription: %s\n", finances[n].account, finances[n].concept);
+        printf("Are you sure?");
+        scanf("%c", &ans);
+        if(ans=='N'||ans=='n'){
+            return 99;
+        }
     }
     else
         printf("You have reached the max number of accounts\nPlease remove or modify the accounts");
@@ -40,7 +45,7 @@ void print_account (MONEY *finances, int n){
         }
 }
 
-void add_transaction(MONEY *finances, int n, int o);
-void print_transaction(MONEY *finances, int n, int o);
+void add_transaction(TRANS *trans, int o);
+void print_transaction(TRANS *trans, int o);
 
 #endif //FINANCE_MANAGER_HEADERS_H
