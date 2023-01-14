@@ -9,14 +9,23 @@ typedef struct money{
     char account[50];
     char concept[100];
 }MONEY;
+typedef struct transactions{
+    float amount;
+    char merchant[50];
+
+}TRANSACTIONS;
 
 void add_account (MONEY *finances, int n){
-    fflush(stdin);
-    printf("Enter the account number: ");
-    gets(finances[n].account);
-    printf("Enter account concept: ");
-    gets(finances[n].concept);
-    printf("Account number: %s\nDescription: %s\n", finances[n].account, finances[n].concept);
+    if(n<50){
+        fflush(stdin);
+        printf("Enter the account number: ");
+        gets(finances[n].account);
+        printf("Enter account description: ");
+        gets(finances[n].concept);
+        printf("Account number: %s\nDescription: %s\n", finances[n].account, finances[n].concept);
+    }
+    else
+        printf("You have reached the max number of accounts\nPlease remove or modify the accounts");
 }
 
 void print_account (MONEY *finances, int n){
@@ -27,11 +36,11 @@ void print_account (MONEY *finances, int n){
     }
     else
         for(i=0;i<n;i++){
-           printf("%s\n%s\n----\n", finances[i].account, finances[i].concept);
+           printf("Account: %s\nDescription: %s\n-----\n", finances[i].account, finances[i].concept);
         }
 }
 
-void add_transaction(MONEY *finances);
-void print_transaction(MONEY *finances);
+void add_transaction(MONEY *finances, int n, int o);
+void print_transaction(MONEY *finances, int n, int o);
 
 #endif //FINANCE_MANAGER_HEADERS_H
