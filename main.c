@@ -10,9 +10,11 @@ int main() {
     printf("Running checks...\n");
     if(!(money=fopen("money.dat", "rb"))){
         money=fopen("money.dat", "wb");
+        n=0;
+        fwrite(&n, sizeof(int), 1, money);
     }
     fread(&n, sizeof(int), 1, money);
-    MONEY finances[n];
+    MONEY finances[5000];
     fread(finances, sizeof(MONEY), n, money);
     fclose(money);
     printf("Done! Welcome\n");
@@ -37,7 +39,10 @@ int main() {
             case 1: //Add Account
                 system("cls");
                 printf("Add Account\n-----\n");
-                add_account(finances, &n);
+                printf("%i\n", n);
+                add_account(finances, n);
+                n++;
+                printf("\n%i", n);
                 getch();
                 break;
             case 2: //Print all accounts

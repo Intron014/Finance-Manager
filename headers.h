@@ -10,21 +10,19 @@ typedef struct money{
     char concept[100];
 }MONEY;
 
-void add_account (MONEY *finances, int *n){
-    int i=*n;
+void add_account (MONEY *finances, int n){
     fflush(stdin);
     printf("Enter the account number: ");
-    gets(finances[i].account);
+    gets(finances[n].account);
     printf("Enter account concept: ");
-    gets(finances[i].concept);
-    printf("Account number: %s\nDescription: %s\n", finances[i].account, finances[i].concept);
-    *n++;
+    gets(finances[n].concept);
+    printf("Account number: %s\nDescription: %s\n", finances[n].account, finances[n].concept);
 }
 
 void print_account (MONEY *finances, int n){
     int i;
     fflush(stdin);
-    for(i=0;i<=n;i++){
+    for(i=0;i<n;i++){
         printf("%s\n%s\n----\n", finances[i].account, finances[i].concept);
     }
 }
