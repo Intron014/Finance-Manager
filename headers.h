@@ -23,9 +23,11 @@ int add_account (MONEY *finances, int n){
         gets(finances[n].account);
         printf("Enter account description: ");
         gets(finances[n].concept);
-        printf("Are you sure?");
+        printf("Are you sure? (y/n): ");
         scanf("%c", &ans);
         if(ans=='N'||ans=='n'){
+            printf("Your data will not be saved");
+            getch();
             return 99;
         }
     }
@@ -41,7 +43,7 @@ void print_account (MONEY *finances, int n){
     }
     else
         for(i=0;i<n;i++){
-           printf("Account: %s\nDescription: %s\n-----\n", finances[i].account, finances[i].concept);
+           printf("-[%i]--\nAccount: %s\nDescription: %s\n", i,finances[i].account, finances[i].concept);
         }
 }
 
