@@ -10,3 +10,4 @@ Nothing big, just to have in mind my spending.
 - [ ] Transaction management
 - [x] Read properly from "money.dat" (Okay-ish, could be better)
 - [x] Allow use for multiple users (with their own .dat files OR all in the same file)
+- [ ] Continue this someday
