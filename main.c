@@ -4,7 +4,7 @@
 #include <conio.h>
 #include "headers.h"
 
-//Edit for Linux
+//TODO: Edit for Linux
 int main() {
     FILE *money;
     int ans, n, o, r;
